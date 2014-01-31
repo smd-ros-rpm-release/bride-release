@@ -1,0 +1,12 @@
+Source: ros-groovy-bride-compilers
+Section: misc
+Priority: extra
+Maintainer: Alexander Bubeck <aub@ipa.fhg.de>
+Build-Depends: debhelper (>= 7.0.50~), ros-groovy-catkin
+Homepage: http://ros.org/wiki/bride_compilers
+Standards-Version: 3.9.2
+
+Package: ros-groovy-bride-compilers
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: bride_compilers
