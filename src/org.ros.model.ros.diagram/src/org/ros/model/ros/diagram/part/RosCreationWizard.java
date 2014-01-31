@@ -169,15 +169,14 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 		}
 		return diagram != null;
 	}
-	
+
 	/**
 	 * NOT generated
 	 */
-	public boolean canFinish()
-	{
-		if(getContainer().getCurrentPage() == diagramModelFilePage)
+	public boolean canFinish() {
+		if (getContainer().getCurrentPage() == diagramModelFilePage)
 			return false;
-		else 
+		else
 			return true;
 	}
 }
