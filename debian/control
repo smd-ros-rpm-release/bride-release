@@ -1,0 +1,12 @@
+Source: ros-hydro-bride-tutorials
+Section: misc
+Priority: extra
+Maintainer: Alexander Bubeck <aub@ipa.fhg.de>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-actionlib, ros-hydro-actionlib-msgs, ros-hydro-catkin, ros-hydro-message-generation, ros-hydro-std-msgs
+Homepage: http://ros.org/wiki/bride_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-hydro-bride-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-actionlib, ros-hydro-actionlib-msgs, ros-hydro-message-runtime, ros-hydro-std-msgs
+Description: bride_tutorials
