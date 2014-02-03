@@ -1,0 +1,12 @@
+Source: ros-hydro-bride-plugin-source
+Section: misc
+Priority: extra
+Maintainer: Alexander Bubeck <aub@ipa.fhg.de>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin
+Homepage: http://ros.org/wiki/bride_plugin_source
+Standards-Version: 3.9.2
+
+Package: ros-hydro-bride-plugin-source
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: Source code for BRICS eclipse plugins.
