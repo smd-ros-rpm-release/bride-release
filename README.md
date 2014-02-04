@@ -1,3 +1,27 @@
+## bride - 0.3.0-4
+
+User `aub@chaos` released the packages in the `bride` repository by running `/usr/local/bin/bloom-release --rosdistro hydro --track hydro bride` on `Tue, 04 Feb 2014 10:03:50 -0000`
+
+These packages were released:
+- `bride`
+- `bride_compilers`
+- `bride_plugin_source`
+- `bride_templates`
+- `bride_tutorials`
+
+Version of package(s) in repository `bride`:
+- rosdistro version: `0.3.0-3`
+- old version: `0.3.0-3`
+- new version: `0.3.0-4`
+
+Versions of tools used:
+- bloom version: `0.4.8`
+- catkin_pkg version: `0.1.25`
+- rosdep version: `0.10.25`
+- rosdistro version: `0.3.3`
+- vcstools version: `0.1.33`
+
+
 ## bride - 0.3.0-3
 
 User `aub@chaos` released the packages in the `bride` repository by running `/usr/local/bin/bloom-release --rosdistro hydro --track hydro bride` on `Mon, 03 Feb 2014 16:39:45 -0000`
