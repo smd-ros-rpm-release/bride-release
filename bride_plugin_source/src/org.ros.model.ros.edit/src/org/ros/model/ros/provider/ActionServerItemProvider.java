@@ -23,16 +23,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.ros.model.ros.ActionClient;
+import org.ros.model.ros.ActionServer;
 import org.ros.model.ros.RosPackage;
 
 /**
- * This is the item provider adapter for a {@link org.ros.model.ros.ActionClient} object.
+ * This is the item provider adapter for a {@link org.ros.model.ros.ActionServer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ActionClientItemProvider
+public class ActionServerItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +46,7 @@ public class ActionClientItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActionClientItemProvider(AdapterFactory adapterFactory) {
+	public ActionServerItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -78,9 +78,9 @@ public class ActionClientItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ActionClient_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ActionClient_name_feature", "_UI_ActionClient_type"),
-				 RosPackage.Literals.ACTION_CLIENT__NAME,
+				 getString("_UI_ActionServer_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActionServer_name_feature", "_UI_ActionServer_type"),
+				 RosPackage.Literals.ACTION_SERVER__NAME,
 				 true,
 				 false,
 				 false,
@@ -93,16 +93,16 @@ public class ActionClientItemProvider
 	 * This adds a property descriptor for the Action Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @ NOT generated
+	 * @not generated
 	 */
 	protected void addActionTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 		(new ItemPropertyDescriptor
 			(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 			 getResourceLocator(),
-			 getString("_UI_ActionClient_ActionType_feature"),
-			 getString("_UI_PropertyDescriptor_description", "_UI_ActionClient_ActionType_feature", "_UI_ActionClient_type"),
-			 RosPackage.Literals.ACTION_CLIENT__ACTION_TYPE,
+			 getString("_UI_ActionServer_ActionType_feature"),
+			 getString("_UI_PropertyDescriptor_description", "_UI_ActionServer_ActionType_feature", "_UI_ActionServer_type"),
+			 RosPackage.Literals.ACTION_SERVER__ACTION_TYPE,
 			 true,
 			 false,
 			 false,
@@ -111,8 +111,8 @@ public class ActionClientItemProvider
 			 null){
 			@Override
 			public Collection<?> getChoiceOfValues(Object object) {
-				ActionClient actionclient = (ActionClient) object;
-				org.ros.model.ros.Package pack = (org.ros.model.ros.Package) actionclient.eContainer().eContainer();
+				ActionServer actionserver = (ActionServer) object;
+				org.ros.model.ros.Package pack = (org.ros.model.ros.Package) actionserver.eContainer().eContainer();
 				System.out.println(pack.getName());
 				
 							
@@ -165,14 +165,14 @@ public class ActionClientItemProvider
 	}
 
 	/**
-	 * This returns ActionClient.gif.
+	 * This returns ActionServer.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ActionClient"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ActionServer"));
 	}
 
 	/**
@@ -183,10 +183,10 @@ public class ActionClientItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ActionClient)object).getName();
+		String label = ((ActionServer)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ActionClient_type") :
-			getString("_UI_ActionClient_type") + " " + label;
+			getString("_UI_ActionServer_type") :
+			getString("_UI_ActionServer_type") + " " + label;
 	}
 
 	/**
@@ -200,9 +200,9 @@ public class ActionClientItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ActionClient.class)) {
-			case RosPackage.ACTION_CLIENT__NAME:
-			case RosPackage.ACTION_CLIENT__ACTION_TYPE:
+		switch (notification.getFeatureID(ActionServer.class)) {
+			case RosPackage.ACTION_SERVER__NAME:
+			case RosPackage.ACTION_SERVER__ACTION_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
