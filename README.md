@@ -1,3 +1,27 @@
+## bride (groovy) - 0.3.0-2
+
+User `bubi@chakana` released the packages in the `bride` repository into the `groovy` distro by running `/usr/local/bin/bloom-release bride --track groovy --rosdistro groovy` on `Tue, 04 Mar 2014 14:22:06 -0000`
+
+These packages were released:
+- `bride`
+- `bride_compilers`
+- `bride_plugin_source`
+- `bride_templates`
+- `bride_tutorials`
+
+Version of package(s) in repository `bride`:
+- rosdistro version: `null`
+- old version: `0.3.0-1`
+- new version: `0.3.0-2`
+
+Versions of tools used:
+- bloom version: `0.5.1`
+- catkin_pkg version: `0.1.26`
+- rosdep version: `0.10.25`
+- rosdistro version: `0.3.4`
+- vcstools version: `0.1.33`
+
+
 ## bride (hydro) - 0.3.0-5
 
 User `bubi@chakana` released the packages in the `bride` repository into the `hydro` distro by running `/usr/local/bin/bloom-release bride --track hydro --rosdistro hydro` on `Tue, 04 Mar 2014 14:13:44 -0000`
