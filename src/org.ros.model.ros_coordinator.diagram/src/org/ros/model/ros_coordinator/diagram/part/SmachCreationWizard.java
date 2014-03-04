@@ -1,4 +1,4 @@
-package org.ros.model.ros_package.diagram.part;
+package org.ros.model.ros_coordinator.diagram.part;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -17,7 +17,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 /**
  * @generated
  */
-public class RosCreationWizard extends Wizard implements INewWizard {
+public class SmachCreationWizard extends Wizard implements INewWizard {
 
 	/**
 	 * @generated
@@ -32,12 +32,12 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 	/**
 	 * @generated
 	 */
-	protected org.ros.model.ros_package.diagram.part.RosCreationWizardPage diagramModelFilePage;
+	protected org.ros.model.ros_coordinator.diagram.part.SmachCreationWizardPage diagramModelFilePage;
 
 	/**
 	 * @generated
 	 */
-	protected org.ros.model.ros_package.diagram.part.RosCreationWizardPage domainModelFilePage;
+	protected org.ros.model.ros_coordinator.diagram.part.SmachCreationWizardPage domainModelFilePage;
 
 	/**
 	 * @generated
@@ -91,8 +91,8 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(org.ros.model.ros_package.diagram.part.Messages.RosCreationWizardTitle);
-		setDefaultPageImageDescriptor(org.ros.model.ros_package.diagram.part.RosDiagramEditorPlugin
+		setWindowTitle(org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizardTitle);
+		setDefaultPageImageDescriptor(org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
 				.getBundledImageDescriptor("icons/wizban/NewRosWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
@@ -101,33 +101,33 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public void addPages() {
-		diagramModelFilePage = new org.ros.model.ros_package.diagram.part.RosCreationWizardPage(
-				"DiagramModelFile", getSelection(), "ros_package_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
+		diagramModelFilePage = new org.ros.model.ros_coordinator.diagram.part.SmachCreationWizardPage(
+				"DiagramModelFile", getSelection(), "ros_coordinator_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
 		diagramModelFilePage
-				.setTitle(org.ros.model.ros_package.diagram.part.Messages.RosCreationWizard_DiagramModelFilePageTitle);
+				.setTitle(org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage
-				.setDescription(org.ros.model.ros_package.diagram.part.Messages.RosCreationWizard_DiagramModelFilePageDescription);
+				.setDescription(org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new org.ros.model.ros_package.diagram.part.RosCreationWizardPage(
-				"DomainModelFile", getSelection(), "ros_package") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new org.ros.model.ros_coordinator.diagram.part.SmachCreationWizardPage(
+				"DomainModelFile", getSelection(), "ros_coordinator") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
 					fileName = fileName.substring(0, fileName.length()
-							- ".ros_package_diagram".length()); //$NON-NLS-1$
-					setFileName(org.ros.model.ros_package.diagram.part.RosDiagramEditorUtil
+							- ".ros_coordinator_diagram".length()); //$NON-NLS-1$
+					setFileName(org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorUtil
 							.getUniqueFileName(getContainerFullPath(),
-									fileName, "ros_package")); //$NON-NLS-1$
+									fileName, "ros_coordinator")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
 		domainModelFilePage
-				.setTitle(org.ros.model.ros_package.diagram.part.Messages.RosCreationWizard_DomainModelFilePageTitle);
+				.setTitle(org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizard_DomainModelFilePageTitle);
 		domainModelFilePage
-				.setDescription(org.ros.model.ros_package.diagram.part.Messages.RosCreationWizard_DomainModelFilePageDescription);
+				.setDescription(org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
@@ -139,18 +139,18 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 
 			protected void execute(IProgressMonitor monitor)
 					throws CoreException, InterruptedException {
-				diagram = org.ros.model.ros_package.diagram.part.RosDiagramEditorUtil
+				diagram = org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorUtil
 						.createDiagram(diagramModelFilePage.getURI(),
 								domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
-						org.ros.model.ros_package.diagram.part.RosDiagramEditorUtil
+						org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorUtil
 								.openDiagram(diagram);
 					} catch (PartInitException e) {
 						ErrorDialog
 								.openError(
 										getContainer().getShell(),
-										org.ros.model.ros_package.diagram.part.Messages.RosCreationWizardOpenEditorError,
+										org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizardOpenEditorError,
 										null, e.getStatus());
 					}
 				}
@@ -165,11 +165,11 @@ public class RosCreationWizard extends Wizard implements INewWizard {
 				ErrorDialog
 						.openError(
 								getContainer().getShell(),
-								org.ros.model.ros_package.diagram.part.Messages.RosCreationWizardCreationError,
+								org.ros.model.ros_coordinator.diagram.part.Messages.SmachCreationWizardCreationError,
 								null, ((CoreException) e.getTargetException())
 										.getStatus());
 			} else {
-				org.ros.model.ros_package.diagram.part.RosDiagramEditorPlugin
+				org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
 						.getInstance()
 						.logError(
 								"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
