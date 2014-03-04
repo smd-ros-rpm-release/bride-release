@@ -8,11 +8,17 @@ find_package(catkin REQUIRED COMPONENTS
 	roscpp
   	rospy
   	std_msgs
+    [%for(node in package.node) {if(node.actionserver.size() > 0){%]
+    actionlib
+    [%}}%]
     dynamic_reconfigure 
 [%for (depend in package.depend) {%]
 	[%=depend%]
 [% } %]
 )
+
+[%=out.startPreserve("#", "#", "additional user defined REQUIREMENTS", true)%]
+[%=out.stopPreserve()%]
 
 [%for(node in package.node) {%]
 generate_dynamic_reconfigure_options(cfg/[%=node.name%].cfg)
@@ -64,6 +70,10 @@ target_link_libraries([%=node.name%]
   ${catkin_LIBRARIES}
 )
 [%}%]
+
+[%=out.startPreserve("#", "#", "additional user defined BUILD STATEMENTS", true)%]
+[%=out.stopPreserve()%]
+
 
 #############
 ## Install ##
