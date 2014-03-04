@@ -1,0 +1,12 @@
+Source: ros-groovy-bride-tutorials
+Section: misc
+Priority: extra
+Maintainer: Alexander Bubeck <aub@ipa.fhg.de>
+Build-Depends: debhelper (>= 7.0.50~), ros-groovy-actionlib, ros-groovy-actionlib-msgs, ros-groovy-catkin, ros-groovy-message-generation, ros-groovy-std-msgs
+Homepage: http://ros.org/wiki/bride_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-groovy-bride-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-actionlib, ros-groovy-actionlib-msgs, ros-groovy-message-runtime, ros-groovy-std-msgs
+Description: bride_tutorials
