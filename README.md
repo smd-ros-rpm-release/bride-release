@@ -1,3 +1,27 @@
+## bride (hydro) - 0.3.3-0
+
+The packages in the `bride` repository were released into the `hydro` distro by running `/usr/bin/bloom-release bride --track hydro --rosdistro hydro` on `Wed, 18 Jun 2014 15:10:01 -0000`
+
+These packages were released:
+- `bride`
+- `bride_compilers`
+- `bride_plugin_source`
+- `bride_templates`
+- `bride_tutorials`
+
+Version of package(s) in repository `bride`:
+- rosdistro version: `0.3.2-1`
+- old version: `0.3.2-1`
+- new version: `0.3.3-0`
+
+Versions of tools used:
+- bloom version: `0.5.10`
+- catkin_pkg version: `0.2.2`
+- rosdep version: `0.10.27`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## bride (hydro) - 0.3.2-1
 
 The packages in the `bride` repository were released into the `hydro` distro by running `/usr/local/bin/bloom-release bride --track hydro --rosdistro hydro` on `Wed, 21 May 2014 20:11:42 -0000`
