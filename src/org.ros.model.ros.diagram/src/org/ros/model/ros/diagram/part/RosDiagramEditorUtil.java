@@ -1,4 +1,4 @@
-package org.ros.model.ros_coordinator.diagram.part;
+package org.ros.model.ros.diagram.part;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -54,13 +54,14 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.Workbench;
 import org.eclipse.ui.part.FileEditorInput;
-import org.ros.model.ros.Package;
+import org.ros.model.ros.Architecture;
 import org.ros.model.ros.RosFactory;
+import org.ros.model.ros.diagram.edit.parts.ArchitectureEditPart;
 
 /**
  * @generated
  */
-public class SmachDiagramEditorUtil {
+public class RosDiagramEditorUtil {
 
 	/**
 	 * @generated
@@ -84,10 +85,8 @@ public class SmachDiagramEditorUtil {
 		if (workspaceResource instanceof IFile) {
 			IWorkbenchPage page = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage();
-			return null != page
-					.openEditor(
-							new FileEditorInput((IFile) workspaceResource),
-							org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditor.ID);
+			return null != page.openEditor(new FileEditorInput(
+					(IFile) workspaceResource), RosDiagramEditor.ID);
 		}
 		return false;
 	}
@@ -102,10 +101,8 @@ public class SmachDiagramEditorUtil {
 		try {
 			file.setCharset("UTF-8", new NullProgressMonitor()); //$NON-NLS-1$
 		} catch (CoreException e) {
-			org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
-					.getInstance()
-					.logError(
-							"Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
+			RosDiagramEditorPlugin.getInstance().logError(
+					"Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
 		}
 	}
 
@@ -125,7 +122,7 @@ public class SmachDiagramEditorUtil {
 	 * @generated
 	 */
 	public static void runWizard(Shell shell, Wizard wizard, String settingsKey) {
-		IDialogSettings pluginDialogSettings = org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
+		IDialogSettings pluginDialogSettings = RosDiagramEditorPlugin
 				.getInstance().getDialogSettings();
 		IDialogSettings wizardDialogSettings = pluginDialogSettings
 				.getSection(settingsKey);
@@ -161,7 +158,7 @@ public class SmachDiagramEditorUtil {
 		}
 		return project;
 	}
-
+	
 	/**
 	 * This method should be called within a workspace modify operation since it creates resources.
 	 * @not generated
@@ -170,10 +167,8 @@ public class SmachDiagramEditorUtil {
 			IProgressMonitor progressMonitor) {
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
-		progressMonitor
-				.beginTask(
-						org.ros.model.ros_coordinator.diagram.part.Messages.SmachDiagramEditorUtil_CreateDiagramProgressTask,
-						3);
+		progressMonitor.beginTask(
+				Messages.RosDiagramEditorUtil_CreateDiagramProgressTask, 3);
 		final Resource diagramResource = editingDomain.getResourceSet()
 				.createResource(diagramURI);
 		final Resource modelResource = editingDomain.getResourceSet()
@@ -181,20 +176,20 @@ public class SmachDiagramEditorUtil {
 		final String diagramName = diagramURI.lastSegment();
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
 				editingDomain,
-				org.ros.model.ros_coordinator.diagram.part.Messages.SmachDiagramEditorUtil_CreateDiagramCommandLabel,
+				Messages.RosDiagramEditorUtil_CreateDiagramCommandLabel,
 				Collections.EMPTY_LIST) {
 			protected CommandResult doExecuteWithResult(
 					IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
-				Package model = createInitialModel();
+				Architecture model = createInitialModel();
+				
 				IProject project = getCurrentProject();
 				String project_name = "";
 				if (project != null) {
 					project_name = project.getName();
 				}
-
 				model.setName(project_name);
-				model.setDescription("The " + project_name + " package");
+				model.setDescription("The " + project_name + " system");
 
 				String user = "TODO";
 				user = System.getProperty("user.name");
@@ -202,13 +197,13 @@ public class SmachDiagramEditorUtil {
 				model.setAuthor_email(user + "@todo.todo");
 
 				model.setLicense("TODO");
+				
+				
 				attachModelToResource(model, modelResource);
 
-				Diagram diagram = ViewService
-						.createDiagram(
-								model,
-								org.ros.model.ros_coordinator.diagram.edit.parts.PackageEditPart.MODEL_ID,
-								org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+				Diagram diagram = ViewService.createDiagram(model,
+						ArchitectureEditPart.MODEL_ID,
+						RosDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				if (diagram != null) {
 					diagramResource.getContents().add(diagram);
 					diagram.setName(diagramName);
@@ -217,17 +212,15 @@ public class SmachDiagramEditorUtil {
 
 				try {
 					modelResource
-							.save(org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorUtil
+							.save(org.ros.model.ros.diagram.part.RosDiagramEditorUtil
 									.getSaveOptions());
 					diagramResource
-							.save(org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorUtil
+							.save(org.ros.model.ros.diagram.part.RosDiagramEditorUtil
 									.getSaveOptions());
 				} catch (IOException e) {
 
-					org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
-							.getInstance()
-							.logError(
-									"Unable to store model and diagram resources", e); //$NON-NLS-1$
+					RosDiagramEditorPlugin.getInstance().logError(
+							"Unable to store model and diagram resources", e); //$NON-NLS-1$
 				}
 				return CommandResult.newOKCommandResult();
 			}
@@ -236,9 +229,8 @@ public class SmachDiagramEditorUtil {
 			OperationHistoryFactory.getOperationHistory().execute(command,
 					new SubProgressMonitor(progressMonitor, 1), null);
 		} catch (ExecutionException e) {
-			org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorPlugin
-					.getInstance().logError(
-							"Unable to create model and diagram", e); //$NON-NLS-1$
+			RosDiagramEditorPlugin.getInstance().logError(
+					"Unable to create model and diagram", e); //$NON-NLS-1$
 		}
 		setCharset(WorkspaceSynchronizer.getFile(modelResource));
 		setCharset(WorkspaceSynchronizer.getFile(diagramResource));
@@ -251,8 +243,8 @@ public class SmachDiagramEditorUtil {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static Package createInitialModel() {
-		return RosFactory.eINSTANCE.createPackage();
+	private static Architecture createInitialModel() {
+		return RosFactory.eINSTANCE.createArchitecture();
 	}
 
 	/**
@@ -261,7 +253,8 @@ public class SmachDiagramEditorUtil {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static void attachModelToResource(Package model, Resource resource) {
+	private static void attachModelToResource(Architecture model,
+			Resource resource) {
 		resource.getContents().add(model);
 	}
 
