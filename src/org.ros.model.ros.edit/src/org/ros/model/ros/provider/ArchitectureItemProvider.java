@@ -6,11 +6,13 @@ package org.ros.model.ros.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,22 +23,18 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.PlatformUI;
-import org.ros.model.ros.Node;
+
+import org.ros.model.ros.Architecture;
 import org.ros.model.ros.RosFactory;
 import org.ros.model.ros.RosPackage;
-import org.ros.model.smach.SmachFactory;
 
 /**
- * This is the item provider adapter for a {@link org.ros.model.ros.Node} object.
+ * This is the item provider adapter for a {@link org.ros.model.ros.Architecture} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class NodeItemProvider
+public class ArchitectureItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -50,7 +48,7 @@ public class NodeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NodeItemProvider(AdapterFactory adapterFactory) {
+	public ArchitectureItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -66,10 +64,11 @@ public class NodeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addFrequencyPropertyDescriptor(object);
-			addArgsPropertyDescriptor(object);
-			addParamSourcePropertyDescriptor(object);
-			addNamespacePropertyDescriptor(object);
+			addAuthorPropertyDescriptor(object);
+			addAuthor_emailPropertyDescriptor(object);
+			addLicensePropertyDescriptor(object);
+			addUrlPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -78,16 +77,38 @@ public class NodeItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_name_feature", "_UI_Node_type"),
-				 RosPackage.Literals.NODE__NAME,
+				 getString("_UI_Architecture_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_name_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__NAME,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Author feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAuthorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Architecture_author_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_author_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__AUTHOR,
 				 true,
 				 false,
 				 false,
@@ -97,127 +118,91 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Frequency feature.
+	 * This adds a property descriptor for the Author email feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @not generated
+	 * @generated
 	 */
-	protected void addFrequencyPropertyDescriptor(Object object) {
+	protected void addAuthor_emailPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_frequency_feature") + " [Hz]",
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_frequency_feature", "_UI_Node_type"),
-				 RosPackage.Literals.NODE__FREQUENCY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Args feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @not generated
-	 */
-	protected void addArgsPropertyDescriptor(Object object) {
-		IFile sourcefile = null;
-		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		if (editor != null) {
-            IEditorInput input = editor.getEditorInput();
-            if (input instanceof IFileEditorInput) {
-            	sourcefile = ((IFileEditorInput)input).getFile();
-            	System.out.println("File from editor: " + sourcefile.getLocation().toOSString());
-            	if(sourcefile.getFileExtension().compareTo("ros_package") != 0 && sourcefile.getFileExtension().compareTo("ros_package_diagram")!=0)
-            	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_args_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_args_feature", "_UI_Node_type"),
-				 RosPackage.Literals.NODE__ARGS,
+				 getString("_UI_Architecture_author_email_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_author_email_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__AUTHOR_EMAIL,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-            	}
-            }
-		}
 	}
 
 	/**
-	 * This adds a property descriptor for the Param Source feature.
+	 * This adds a property descriptor for the License feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @not generated
+	 * @generated
 	 */
-	protected void addParamSourcePropertyDescriptor(Object object) {
-		IFile sourcefile = null;
-		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		if (editor != null) {
-            IEditorInput input = editor.getEditorInput();
-            if (input instanceof IFileEditorInput) {
-            	sourcefile = ((IFileEditorInput)input).getFile();
-            	System.out.println("File from editor: " + sourcefile.getLocation().toOSString());
-            	if(sourcefile.getFileExtension().compareTo("ros_package") != 0 && sourcefile.getFileExtension().compareTo("ros_package_diagram")!=0)
-            	{
+	protected void addLicensePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_paramSource_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_paramSource_feature", "_UI_Node_type"),
-				 RosPackage.Literals.NODE__PARAM_SOURCE,
+				 getString("_UI_Architecture_license_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_license_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__LICENSE,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-              	}
-            }
-		}
 	}
 
 	/**
-	 * This adds a property descriptor for the Namespace feature.
+	 * This adds a property descriptor for the Url feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @not generated
+	 * @generated
 	 */
-	protected void addNamespacePropertyDescriptor(Object object) {
-		IFile sourcefile = null;
-		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		if (editor != null) {
-            IEditorInput input = editor.getEditorInput();
-            if (input instanceof IFileEditorInput) {
-            	sourcefile = ((IFileEditorInput)input).getFile();
-            	System.out.println("File from editor: " + sourcefile.getLocation().toOSString());
-            	if(sourcefile.getFileExtension().compareTo("ros_package") != 0 && sourcefile.getFileExtension().compareTo("ros_package_diagram")!=0)
-            	{
+	protected void addUrlPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_namespace_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_namespace_feature", "_UI_Node_type"),
-				 RosPackage.Literals.NODE__NAMESPACE,
+				 getString("_UI_Architecture_url_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_url_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__URL,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-            	}
-            }
-		}
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Architecture_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Architecture_description_feature", "_UI_Architecture_type"),
+				 RosPackage.Literals.ARCHITECTURE__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -232,13 +217,10 @@ public class NodeItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RosPackage.Literals.NODE__PUBLISHER);
-			childrenFeatures.add(RosPackage.Literals.NODE__SUBSCRIBER);
-			childrenFeatures.add(RosPackage.Literals.NODE__SERVICE_CLIENT);
-			childrenFeatures.add(RosPackage.Literals.NODE__SERVICE_SERVER);
-			childrenFeatures.add(RosPackage.Literals.NODE__PARAMETER);
-			childrenFeatures.add(RosPackage.Literals.NODE__ACTIONSERVER);
-			childrenFeatures.add(RosPackage.Literals.NODE__ACTIONCLIENT);
+			childrenFeatures.add(RosPackage.Literals.ARCHITECTURE__TOPIC);
+			childrenFeatures.add(RosPackage.Literals.ARCHITECTURE__PACKAGES);
+			childrenFeatures.add(RosPackage.Literals.ARCHITECTURE__ACTION);
+			childrenFeatures.add(RosPackage.Literals.ARCHITECTURE__SERVICE);
 		}
 		return childrenFeatures;
 	}
@@ -257,14 +239,14 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This returns Node.gif.
+	 * This returns Architecture.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Node"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Architecture"));
 	}
 
 	/**
@@ -275,10 +257,10 @@ public class NodeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Node)object).getName();
+		String label = ((Architecture)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Node_type") :
-			getString("_UI_Node_type") + " " + label;
+			getString("_UI_Architecture_type") :
+			getString("_UI_Architecture_type") + " " + label;
 	}
 
 	/**
@@ -292,21 +274,19 @@ public class NodeItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Node.class)) {
-			case RosPackage.NODE__NAME:
-			case RosPackage.NODE__FREQUENCY:
-			case RosPackage.NODE__ARGS:
-			case RosPackage.NODE__PARAM_SOURCE:
-			case RosPackage.NODE__NAMESPACE:
+		switch (notification.getFeatureID(Architecture.class)) {
+			case RosPackage.ARCHITECTURE__NAME:
+			case RosPackage.ARCHITECTURE__AUTHOR:
+			case RosPackage.ARCHITECTURE__AUTHOR_EMAIL:
+			case RosPackage.ARCHITECTURE__LICENSE:
+			case RosPackage.ARCHITECTURE__URL:
+			case RosPackage.ARCHITECTURE__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case RosPackage.NODE__PUBLISHER:
-			case RosPackage.NODE__SUBSCRIBER:
-			case RosPackage.NODE__SERVICE_CLIENT:
-			case RosPackage.NODE__SERVICE_SERVER:
-			case RosPackage.NODE__PARAMETER:
-			case RosPackage.NODE__ACTIONSERVER:
-			case RosPackage.NODE__ACTIONCLIENT:
+			case RosPackage.ARCHITECTURE__TOPIC:
+			case RosPackage.ARCHITECTURE__PACKAGES:
+			case RosPackage.ARCHITECTURE__ACTION:
+			case RosPackage.ARCHITECTURE__SERVICE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -326,48 +306,23 @@ public class NodeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RosPackage.Literals.NODE__PUBLISHER,
-				 RosFactory.eINSTANCE.createPublisher()));
+				(RosPackage.Literals.ARCHITECTURE__TOPIC,
+				 RosFactory.eINSTANCE.createTopic()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RosPackage.Literals.NODE__SUBSCRIBER,
-				 RosFactory.eINSTANCE.createSubscriber()));
+				(RosPackage.Literals.ARCHITECTURE__PACKAGES,
+				 RosFactory.eINSTANCE.createPackage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RosPackage.Literals.NODE__SERVICE_CLIENT,
-				 RosFactory.eINSTANCE.createServiceClient()));
+				(RosPackage.Literals.ARCHITECTURE__ACTION,
+				 RosFactory.eINSTANCE.createAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RosPackage.Literals.NODE__SERVICE_CLIENT,
-				 SmachFactory.eINSTANCE.createServiceState()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RosPackage.Literals.NODE__SERVICE_SERVER,
-				 RosFactory.eINSTANCE.createServiceServer()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RosPackage.Literals.NODE__PARAMETER,
-				 RosFactory.eINSTANCE.createParameter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RosPackage.Literals.NODE__ACTIONSERVER,
-				 RosFactory.eINSTANCE.createActionServer()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RosPackage.Literals.NODE__ACTIONCLIENT,
-				 RosFactory.eINSTANCE.createActionClient()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RosPackage.Literals.NODE__ACTIONCLIENT,
-				 SmachFactory.eINSTANCE.createActionState()));
+				(RosPackage.Literals.ARCHITECTURE__SERVICE,
+				 RosFactory.eINSTANCE.createService()));
 	}
 
 	/**
