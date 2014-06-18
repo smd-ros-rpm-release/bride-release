@@ -1,0 +1,12 @@
+Source: ros-indigo-bride
+Section: misc
+Priority: extra
+Maintainer: Alexander Bubeck <aub@ipa.fraunhofer.de>
+Build-Depends: debhelper (>= 9.0.0), default-jdk, libcurl4-openssl-dev, ros-indigo-catkin, ros-indigo-rospack
+Homepage: http://ros.org/wiki/bride
+Standards-Version: 3.9.2
+
+Package: ros-indigo-bride
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, default-jdk, ros-indigo-bride-compilers, ros-indigo-bride-templates, ros-indigo-bride-tutorials
+Description: installer.py installs a full eclipse installation in this package. Additionally CDT and the BRIDE plugins will be installed. After rosmake you have the full model driven engineering tool chain accessible inside this package.
