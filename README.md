@@ -1,3 +1,29 @@
+## bride (indigo) - 0.3.3-1
+
+The packages in the `bride` repository were released into the `indigo` distro by running `/usr/bin/bloom-release bride --track indigo --rosdistro indigo` on `Wed, 22 Oct 2014 11:37:16 -0000`
+
+These packages were released:
+- `bride`
+- `bride_compilers`
+- `bride_plugin_source`
+- `bride_templates`
+- `bride_tutorials`
+
+Version of package(s) in repository `bride`:
+- upstream repository: https://github.com/ipa320/bride.git
+- release repository: https://github.com/ipa320/bride-release.git
+- rosdistro version: `0.3.3-0`
+- old version: `0.3.3-0`
+- new version: `0.3.3-1`
+
+Versions of tools used:
+- bloom version: `0.5.12`
+- catkin_pkg version: `0.2.4`
+- rosdep version: `0.10.30`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## bride (indigo) - 0.3.3-0
 
 The packages in the `bride` repository were released into the `indigo` distro by running `/usr/bin/bloom-release bride --track indigo --rosdistro indigo --new-track` on `Wed, 18 Jun 2014 15:17:02 -0000`
