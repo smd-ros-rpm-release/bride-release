@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="ros_coordinator_diagram"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="ros_coordinator_diagram"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/RosDiagramFile.gif"
+         extensions="ros_coordinator_diagram"
+         default="true"
+         class="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditor"
+         matchingStrategy="org.ros.model.ros_coordinator.diagram.part.SmachMatchingStrategy"
+         contributorClass="org.ros.model.ros_coordinator.diagram.part.SmachDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="org.ros.model.ros_coordinator.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="false"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/RosDiagramFile.gif"
+  	     category="org.eclipse.ui.BRIDE"
+  	     class="org.ros.model.ros_coordinator.diagram.part.SmachCreationWizard"
+  	     id="org.ros.model.ros_coordinator.diagram.part.SmachCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.ros.model.ros_coordinator.diagram.InitDiagram"
+            nameFilter="*.ros_coordinator"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.ros.model.ros_coordinator.diagram.part.SmachInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.ros.model.ros_coordinator.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="RosCoordinatorPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="RosCoordinatorPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="RosCoordinatorRender">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="org.ros.model.ros_coordinator.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.ros.model.ros.diagram.general"
+            name="%prefpage.org.ros.model.ros.diagram.general"
+            class="org.ros.model.ros_coordinator.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="org.ros.model.ros.diagram.appearance"
+            name="%prefpage.org.ros.model.ros.diagram.appearance"
+            category="org.ros.model.ros.diagram.general"
+            class="org.ros.model.ros_coordinator.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.ros.model.ros.diagram.connections"
+            name="%prefpage.org.ros.model.ros.diagram.connections"
+            category="org.ros.model.ros.diagram.general"
+            class="org.ros.model.ros_coordinator.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.ros.model.ros.diagram.printing"
+            name="%prefpage.org.ros.model.ros.diagram.printing"
+            category="org.ros.model.ros.diagram.general"
+            class="org.ros.model.ros_coordinator.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.ros.model.ros.diagram.rulersAndGrid"
+            name="%prefpage.org.ros.model.ros.diagram.rulersAndGrid"
+            category="org.ros.model.ros.diagram.general"
+            class="org.ros.model.ros_coordinator.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="org.ros.model.ros_coordinator.diagram"
+            labelProvider="org.ros.model.ros_coordinator.diagram.sheet.SmachSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="org.ros.model.ros_coordinator.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="org.ros.model.ros_coordinator.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="org.ros.model.ros_coordinator.diagram.sheet.SmachPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="RosCoordinator"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="RosCoordinator"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2001,3001,3002,3003,3004"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5003,5001,5002"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7001"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfPackageEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.PackageEditPart" id="Package_1000"/>
+         <context elements="Package_1000"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfSMACHStateMachineEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.SMACHStateMachineEditPart" id="SMACHStateMachine_2001"/>
+         <context elements="SMACHStateMachine_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfActionStateEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.ActionStateEditPart" id="ActionState_3001"/>
+         <context elements="ActionState_3001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfServiceClientEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.ServiceClientEditPart" id="ServiceState_3002"/>
+         <context elements="ServiceState_3002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfFinalState2EditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.FinalState2EditPart" id="FinalState_3003"/>
+         <context elements="FinalState_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.ros.model.ros_coordinator.diagram.providers.assistants.SmachModelingAssistantProviderOfFinalStateEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.ros.model.ros_coordinator.diagram.edit.parts.FinalStateEditPart" id="InitActionState_3004"/>
+         <context elements="InitActionState_3004"/>
+      </modelingAssistantProvider>
+      
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://ros/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.Package_1000"
+               name="%metatype.name.Package_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Package"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.PackageEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.SMACHStateMachine_2001"
+               name="%metatype.name.SMACHStateMachine_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SMACHStateMachine"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.SMACHStateMachineEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.ActionState_3001"
+               name="%metatype.name.ActionState_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ActionState"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.ActionStateEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.ServiceState_3002"
+               name="%metatype.name.ServiceState_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ServiceState"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.ServiceClientEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.FinalState_3003"
+               name="%metatype.name.FinalState_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FinalState"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.FinalState2EditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.InitActionState_3004"
+               name="%metatype.name.InitActionState_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InitActionState"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.FinalStateEditHelper">
+            <param name="semanticHint" value="3004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://smach/1.0">
+         <metamodelType
+               id="org.ros.model.ros_coordinator.diagram.SMACHTransition_4001"
+               name="%metatype.name.SMACHTransition_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SMACHTransition"
+               edithelper="org.ros.model.ros_coordinator.diagram.edit.helpers.StateTransitionEditHelper">
+            <param name="semanticHint" value="4001"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="org.ros.model.ros_coordinator.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="org.ros.model.ros_coordinator.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="org.ros.model.ros_coordinator.diagram.TypeContext">
+         <elementType ref="org.ros.model.ros_coordinator.diagram.Package_1000"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.SMACHStateMachine_2001"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.ActionState_3001"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.ServiceState_3002"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.FinalState_3003"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.InitActionState_3004"/>
+         <elementType ref="org.ros.model.ros_coordinator.diagram.SMACHTransition_4001"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="org.ros.model.ros_coordinator.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="org.ros.model.ros_coordinator.diagram"
+           properties="isURIEditorInput"
+           class="org.ros.model.ros_coordinator.diagram.part.SmachUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="org.ros.model.ros_coordinator.diagram.resourceContent"/>
+			<contentExtension pattern="org.ros.model.ros_coordinator.diagram.domainResourceContent"/>
+            <contentExtension pattern="org.ros.model.ros_coordinator.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="org.ros.model.ros_coordinator.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="org.ros.model.ros_coordinator.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="org.ros.model.ros_coordinator.diagram.navigator.SmachNavigatorContentProvider" 
+            labelProvider="org.ros.model.ros_coordinator.diagram.navigator.SmachNavigatorLabelProvider"
+            icon="icons/obj16/RosDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="ros_coordinator_diagram"/>
+               </and>
+               <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="org.ros.model.ros_coordinator.diagram.navigatorSorter" 
+               class="org.ros.model.ros_coordinator.diagram.navigator.SmachNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="ros_coordinator_diagram"/>
+                  </and>
+                  <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="org.ros.model.ros_coordinator.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="org.ros.model.ros_coordinator.diagram.navigator.SmachDomainNavigatorContentProvider" 
+            labelProvider="org.ros.model.ros_coordinator.diagram.navigator.SmachDomainNavigatorLabelProvider"
+            icon="icons/obj16/RosDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="ros_coordinator"/>
+               </and>
+               <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="org.ros.model.ros_coordinator.diagram.navigatorActionProvider"
+            class="org.ros.model.ros_coordinator.diagram.navigator.SmachNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="org.ros.model.ros_coordinator.diagram.navigatorLinkHelper"
+            class="org.ros.model.ros_coordinator.diagram.navigator.SmachNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="org.ros.model.ros_coordinator.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="org.ros.model.ros_coordinator.diagram.navigator.SmachAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="org.ros.model.ros_coordinator.diagram.part.SmachDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="org.ros.model.ros_coordinator.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="org.ros.model.ros_coordinator.diagram.updateDiagram"
+         contextId="org.ros.model.ros_coordinator.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="org.ros.model.ros_coordinator.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="org.ros.model.ros_coordinator.diagram.edit.parts.PackageEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="org.ros.model.ros_coordinator.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="org.ros.model.ros_coordinator.diagram.part.SmachDiagramEditorID"
+         defaultHandler="org.ros.model.ros_coordinator.diagram.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings">
+	<key commandId="org.ros.model.ros_coordinator.configureState" sequence="M1+J" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+	</extension>
+	<extension point="org.eclipse.ui.commands">
+		<category name="Configure" description="Configuring of States." id="org.eclipse.gmf.category.configure"/>
+		<command categoryId="org.eclipse.gmf.category.configure" description="Configures State" id="org.ros.model.ros_coordinator.configureState" name="Configure State">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+	      <objectContribution
+	            adaptable="false"
+	            id="org.ros.model.ros_coordinator.diagram.ui.objectContribution.ActionStateEditPart1"
+	            objectClass="org.ros.model.ros_coordinator.diagram.edit.parts.ActionStateEditPart">
+	         <menu 
+	            id="NodeConfigure" 
+	            label="&amp;Configure" 
+	            path="additions"> 
+	            <separator name="group1"/>
+	         </menu>
+	         <action
+	               class="org.ros.model.ros_coordinator.diagram.part.CobTeacherConfigureStateAction"
+	               definitionId="org.ros.model.ros_coordinator.configureState"
+	               enablesFor="1"
+	               id="org.ros.model.ros_coordinator.popup.ConfigureStateActionID"
+	               label="&amp;Teach configuration"
+	               menubarPath="NodeConfigure/group1">
+	         </action>
+	      </objectContribution>                    
+</extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachMarkerNavigationProvider">
+         <MarkerType name="org.ros.model.ros_coordinator.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+<extension id="diagnostic" name="RosCoordinator Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>
+<extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="org.ros.model.ros_coordinator.diagram.providers.SmachValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintProviders">
+      <?gmfgen generated="true"?>
+            <category id="SmachPackageAuditContainer" mandatory="false" name="SmachPackageAuditContainer">
+         <![CDATA[]]>
+      </category>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://ros/1.0"/>
+         <package namespaceUri="http://smach/1.0"/>
+               <constraints categories="SmachPackageAuditContainer">
+                  <constraint id="PackageNameAuditRule"
+            lang="OCL"
+            name="PackageNameAuditRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name of package]]></message>
+            <target class="ros.Package"/>
+         </constraint>
+                  <constraint id="PackageAuthorRule"
+            lang="OCL"
+            name="PackageAuthorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[author.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing author and maintainer of package.]]></message>
+            <target class="ros.Package"/>
+         </constraint>
+                  <constraint id="PackageDescriptionRule"
+            lang="OCL"
+            name="PackageDescriptionRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[description.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Package description must not be empty]]></message>
+            <target class="ros.Package"/>
+         </constraint>
+                  <constraint id="PackageAuthorEmailRule"
+            lang="OCL"
+            name="PackageAuthorEmailRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[author_email.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing Email of author and maintainer of package.]]></message>
+            <target class="ros.Package"/>
+         </constraint>
+                  <constraint id="NodeNameRule"
+            lang="OCL"
+            name="NodeNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name of node.]]></message>
+            <target class="ros.Node"/>
+         </constraint>
+                  <constraint id="PublisherNameRule"
+            lang="OCL"
+            name="PublisherNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for Publisher.]]></message>
+            <target class="ros.Publisher"/>
+         </constraint>
+                  <constraint id="PublisherMsgRule"
+            lang="OCL"
+            name="PublisherMsgRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[msg.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a message type for the Publisher]]></message>
+            <target class="ros.Publisher"/>
+         </constraint>
+                  <constraint id="SubscriberNameRule"
+            lang="OCL"
+            name="SubscriberNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for Subscriber.]]></message>
+            <target class="ros.Subscriber"/>
+         </constraint>
+                  <constraint id="SubscriberMsgRule"
+            lang="OCL"
+            name="SubscriberMsgRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[msg.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a message type for the Subscriber.]]></message>
+            <target class="ros.Subscriber"/>
+         </constraint>
+                  <constraint id="ServiceServerNameRule"
+            lang="OCL"
+            name="ServiceServerNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for ServiceServer.]]></message>
+            <target class="ros.ServiceServer"/>
+         </constraint>
+                  <constraint id="ServiceServerMsgRule"
+            lang="OCL"
+            name="ServiceServerMsgRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[msg.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a service type for the ServiceServer.]]></message>
+            <target class="ros.ServiceServer"/>
+         </constraint>
+                  <constraint id="ServiceStateGoalRule"
+            lang="OCL"
+            name="ServiceStateGoalRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[goal.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to name a goal name that is used to find the goal on the rosparam server.]]></message>
+            <target class="smach.ServiceState"/>
+         </constraint>
+                  <constraint id="ServiceClientNameRule"
+            lang="OCL"
+            name="ServiceClientNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for ServiceClient.]]></message>
+            <target class="ros.ServiceClient"/>
+         </constraint>
+                  <constraint id="ServiceClientMsgRule"
+            lang="OCL"
+            name="ServiceClientMsgRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[msg.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a service type for the ServiceClient.]]></message>
+            <target class="ros.ServiceClient"/>
+         </constraint>
+                  <constraint id="ActionServerNameRule"
+            lang="OCL"
+            name="ActionServerNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for ActionServer.]]></message>
+            <target class="ros.ActionServer"/>
+         </constraint>
+                  <constraint id="ActionStateGoalRule"
+            lang="OCL"
+            name="ActionStateGoalRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[goal.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to name a goal name that is used to find the goal on the rosparam server.]]></message>
+            <target class="smach.ActionState"/>
+         </constraint>
+                  <constraint id="ActionServerActionTypeRule"
+            lang="OCL"
+            name="ActionServerActionTypeRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[ActionType.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a action type for the ActionServer.]]></message>
+            <target class="ros.ActionServer"/>
+         </constraint>
+                  <constraint id="ActionClientNameRule"
+            lang="OCL"
+            name="ActionClientNameRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[name.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Missing name for ActionClient.]]></message>
+            <target class="ros.ActionClient"/>
+         </constraint>
+                  <constraint id="ActionClientActionTypeRule"
+            lang="OCL"
+            name="ActionClientActionTypeRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[ActionType.size() > 0]]>
+            <description><![CDATA[]]></description>
+            <message><![CDATA[You have to define a action type for the ActionClient.]]></message>
+            <target class="ros.ActionClient"/>
+         </constraint>
+                  </constraints>
+      </constraintProvider>
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintBindings">
+      <?gmfgen generated="true"?>
+      <clientContext default="false" id="org.ros.model.ros_coordinator.diagramDefaultCtx">
+         <selector class="org.ros.model.ros_coordinator.diagram.providers.SmachValidationProvider$DefaultCtx"/>
+      </clientContext>
+      <binding context="org.ros.model.ros_coordinator.diagramDefaultCtx">
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PackageNameAuditRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PackageAuthorRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PackageDescriptionRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PackageAuthorEmailRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.NodeNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PublisherNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.PublisherMsgRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.SubscriberNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.SubscriberMsgRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ServiceServerNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ServiceServerMsgRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ServiceStateGoalRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ServiceClientNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ServiceClientMsgRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ActionServerNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ActionStateGoalRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ActionServerActionTypeRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ActionClientNameRule"/>
+                  <constraint ref="org.ros.model.ros_coordinator.diagram.ActionClientActionTypeRule"/>
+               </binding>
+
+   </extension>
+
+<extension point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
+      <?gmfgen generated="true"?>
+      <clientContext id="org.ros.model.ros_coordinator.diagramDefaultCtx"/>
+   </extension>
+
+   
+
+   <!-- optionally, specify keybindings -->
+</plugin>
