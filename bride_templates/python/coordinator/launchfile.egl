@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+[%=out.startPreserve("<!--", "-->", "additional custom Launchfile statements in the beginning", true)%]
+[%=out.stopPreserve()%]
+
+
+	<include file="$(find [%=package.name%])/launch/[%=node.name%]_config.launch" />
+	<node pkg="[%=package.name%]" type="[%=node.name%]" name="[%=node.name%]" output="screen"/>
+</launch>
