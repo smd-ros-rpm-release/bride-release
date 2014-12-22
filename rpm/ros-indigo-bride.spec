@@ -1,3 +1,6 @@
+%undefine _missing_build_ids_terminate_build
+%undefine _python_bytecompile_errors_terminate_build
+
 Name:           ros-indigo-bride
 Version:        0.3.3
 Release:        1%{?dist}
@@ -8,7 +11,6 @@ License:        BSD
 URL:            http://ros.org/wiki/bride
 Source0:        %{name}-%{version}.tar.gz
 
-Requires:       java-1.7.0-openjdk
 Requires:       java-1.8.0-openjdk
 Requires:       ros-indigo-bride-compilers
 Requires:       ros-indigo-bride-templates
@@ -19,7 +21,6 @@ BuildRequires:  glibc-devel
 BuildRequires:  glibc-devel(x86-32)
 BuildRequires:  glibc-static
 BuildRequires:  glibc-static(x86-32)
-BuildRequires:  java-1.7.0-openjdk
 BuildRequires:  java-1.8.0-openjdk
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
