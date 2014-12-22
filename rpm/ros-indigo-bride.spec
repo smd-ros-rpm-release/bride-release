@@ -1,3 +1,6 @@
+%undefine _missing_build_ids_terminate_build
+%undefine _python_bytecompile_errors_terminate_build
+
 Name:           ros-indigo-bride
 Version:        0.3.3
 Release:        1%{?dist}
